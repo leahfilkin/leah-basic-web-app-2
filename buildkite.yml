@@ -12,3 +12,12 @@ steps:
     branches: master
     agents:
       queue: fma-margaret-lab
+      
+  - wait
+
+  - label: "Push to cloudsmith"
+    command: scripts/push-image.sh
+    env:
+      TAG: ${BUILDKITE_BUILD_NUMBER}
+    agents:
+      queue: fma-margaret-lab
