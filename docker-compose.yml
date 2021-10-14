@@ -6,7 +6,4 @@ services:
     working_dir: /app/BasicWebApp
     volumes:
       - "./BasicWebApp:/app/BasicWebApp"
-      - "$HOME/.nuget:/root/nuget"
     command: dotnet test ./BasicWebApp.Tests
-    environment:
-      ASPNETCORE_ENVIRONMENT: Development
