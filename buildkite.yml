@@ -1,6 +1,14 @@
 ---
 steps:
-  - label: "Integration tests"
+  - label: "Run tests"
     command: docker-compose run --rm tests
+    agents:
+      queue: fma-margaret-lab
+  
+  - wait
+
+  - label: "Build and Publish Docker Image"
+    command: ./scripts/build.sh ${BUILDKITE_BUILD_ID}
+    branches: master
     agents:
       queue: fma-margaret-lab
