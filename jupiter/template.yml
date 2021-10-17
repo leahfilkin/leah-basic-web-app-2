@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "leah-basic-web-app-2-deployment"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "leah-basic-web-app-2"
+  template:
+    metadata:
+      labels:
+        app: "leah-basic-web-app-2"
+        repo: "go-boldly"
+        routing-key: "my-victorops-key"
+        myob-product: "essentials"
+    spec:
+      containers:
+        - image: "nginx:alpine"
+          name: nginx
+          ports:
+            - containerPort: 80
