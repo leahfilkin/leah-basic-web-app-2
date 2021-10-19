@@ -14,4 +14,11 @@ steps:
     branches: master
     agents:
       queue: fma-margaret-lab
-    
+  
+  - wait
+
+  - label: ":kubernetes: Deploy to Preprod"
+    command: ./scripts/deploy.sh
+    branches: master
+    agents:
+      queue: europa-preprod-fma
