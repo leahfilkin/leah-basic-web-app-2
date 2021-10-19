@@ -17,7 +17,7 @@ steps:
   
   - wait
 
-  - label: ":kubernetes: Deploy to Preprod"
+  - label: "Deploy to Preprod"
     command: ./scripts/deploy.sh
     branches: master
     agents:

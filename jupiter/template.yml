@@ -12,7 +12,7 @@ objects:
     apiVersion: apps/v1
     metadata:
       name: "leah-filkin-deployment"
-      namespace: training
+      namespace: fma
       labels:
         app: "leah-filkin"
     spec:
@@ -37,7 +37,7 @@ objects:
       annotations:
         prometheus.io/scrape: "true"
       name: "leah-filkin-service"
-      namespace: "training"
+      namespace: fma
       labels:
         app: "leah-filkin"
     spec:
@@ -53,7 +53,7 @@ objects:
       annotations:
         kubernetes.io/tls-acme: "true"
       name: "leah-filkin-ingress"
-      namespace: training
+      namespace: fma
       labels:
         app: "leah-filkin"
     spec:
