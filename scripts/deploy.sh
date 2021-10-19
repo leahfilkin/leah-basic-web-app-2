@@ -1,1 +1,1 @@
-kubectl apply -f ../jupiter/template.yml -n training
+kubectl apply -f ./jupiter/template.yml -n fma
