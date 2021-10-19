@@ -8,7 +8,9 @@ steps:
   - wait
 
   - label: "Build Docker Image and Push to Cloudsmith"
-    command: ./scripts/build.sh ${BUILDKITE_BUILD_ID}
+    command: ./scripts/build.sh 
+    env:
+      TAG: ${BUILDKITE_BUILD_ID}
     branches: master
     agents:
       queue: fma-margaret-lab

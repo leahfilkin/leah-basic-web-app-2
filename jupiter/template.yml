@@ -1,22 +1,74 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: "leah-basic-web-app-2-deployment"
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: "leah-basic-web-app-2"
-  template:
-    metadata:
-      labels:
-        app: "leah-basic-web-app-2"
-        repo: "go-boldly"
-        routing-key: "my-victorops-key"
-        myob-product: "essentials"
-    spec:
-      containers:
-        - image: "nginx:alpine"
-          name: nginx
-          ports:
-            - containerPort: 80
+#---
+#kind: "Template"
+#apiVersion: "v1"
+#metadata:
+#  name: "leah-filkin"
+#  annotations:
+#    description: "leah-filkin release template"
+#objects:
+#    ## FINE ABOVE
+#
+#  - kind: Deployment #declaration of pods
+#    apiVersion: apps/v1
+#    metadata:
+#      name: "leah-filkin-deployment"
+#      namespace: training
+#      labels:
+#        app: "leah-filkin"
+#    spec:
+#      replicas: 2
+#      selector:
+#        matchLabels:
+#          app: "leah-filkin"
+#      template:
+#        metadata:
+#          labels:
+#            app: "leah-filkin"
+#        spec:
+#          containers:
+#            - image: "nginx:alpine"
+#              name: nginx
+#              ports:
+#                - containerPort: 80
+#    
+#  - kind: Service #making it so that the containers can communicate
+#    apiVersion: v1
+#    metadata:
+#      annotations:
+#        prometheus.io/scrape: "true"
+#      name: "leah-filkin-service"
+#      namespace: "training"
+#      labels:
+#        app: "leah-filkin"
+#    spec:
+#      ports:
+#        - port: 80
+#          targetPort: 80
+#      selector:
+#        app: "leah-filkin"
+#
+#  - kind: Ingress #getting it on the web
+#    apiVersion: networking.k8s.io/v1
+#    metadata:
+#      annotations:
+#        kubernetes.io/tls-acme: "true"
+#      name: "leah-filkin-ingress"
+#      namespace: training
+#      labels:
+#        app: "leah-filkin"
+#    spec:
+#      rules:
+#        - host: "leah-filkin.svc.platform.myobdev.com"
+#          http:
+#            paths:
+#              - path: /
+#                pathType: Prefix
+#                backend:
+#                  service:
+#                    name: "leah-filkin-service"
+#                    port:
+#                      number: 80
+#      tls:
+#        - hosts:
+#            - "leah-filkin.svc.platform.myobdev.com"
+#          secretName: "leah-filkin-tls"
