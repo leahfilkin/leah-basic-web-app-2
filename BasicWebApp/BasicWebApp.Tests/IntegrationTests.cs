@@ -85,17 +85,13 @@ namespace BasicWebApp.Tests
         public async Task DeletesUserWithStatusCode200()
         {
             var client = CreateClient();
-            var deleted = new User {
-                Id = new Guid("77E21A11-BE8B-46BA-A6ED-0D70ACBBAB4A"), 
-                FirstName = "Leah", 
-                LastName = "Filkin"
-            };
+            var deletedId = new Guid("77E21A11-BE8B-46BA-A6ED-0D70ACBBAB4A");
             var response = await client.DeleteAsync("users/77E21A11-BE8B-46BA-A6ED-0D70ACBBAB4A");
             var content = JsonConvert.DeserializeObject<User>
                 (await response.Content.ReadAsStringAsync());
             
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(deleted, content);
+            Assert.Equal(deletedId, content.Id);
         }
     }
 }
