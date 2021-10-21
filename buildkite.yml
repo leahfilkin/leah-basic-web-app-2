@@ -4,6 +4,11 @@ steps:
     command: docker-compose run --rm tests
     agents:
       queue: fma-margaret-lab
+
+  - label: ":sonarqube: Sonarqube scan"
+    command: .sonarqube/scan.sh
+    agents:
+      queue: fma-margaret-lab
   
   - wait
 
