@@ -20,10 +20,19 @@ steps:
     agents:
       queue: fma-margaret-lab
   
-  - wait
+  - block: "Deploy to Preprod?"
 
   - label: "Deploy to Preprod"
-    command: ./scripts/deploy.sh
+    command: ./scripts/deploy.sh preprod ${BUILDKITE_BUILD_NUMBER}
     branches: master
     agents:
       queue: europa-preprod-fma
+      
+  - block: "Deploy to Prod?"
+
+  - label: "Deploy to Prod"
+    command: ./scripts/deploy.sh prod ${BUILDKITE_BUILD_NUMBER}
+    branches: master
+    agents:
+      queue: europa-preprod-fma
+    

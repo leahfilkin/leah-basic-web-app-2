@@ -1,0 +1,8 @@
+name: leah-filkin-app-preprod
+namespace: fma
+image: docker.myob.com/future-makers-academy/leah-basic-web-app-2
+containerPort: "80"
+host: leah-filkin-app-preprod.svc.platform.myobdev.com
+deploymentName: leah-filkin-app-preprod-deployment
+serviceName: leah-filkin-app-preprod-service
+ingressName: leah-filkin-app-preprod-ingress
