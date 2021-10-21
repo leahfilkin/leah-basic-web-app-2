@@ -5,7 +5,7 @@ steps:
     agents:
       queue: fma-margaret-lab
 
-  - label: ":sonarqube: Sonarqube scan"
+  - label: "Sonarqube scan"
     command: .sonarqube/scan.sh
     agents:
       queue: fma-margaret-lab

@@ -8,7 +8,7 @@ function ssm-get {
 	echo "$var"
 }
 
-PROJECT_KEY="sonar-ops-and-arch:leah-basic-web-app-2"
+PROJECT_KEY="sonar-proteges:leah-basic-web-app-2"
 PROJECT_NAME="leah-basic-web-app-2"
 TOKEN=$(ssm-get "/etc/tokens/sonarqube")
 SOLUTION_FILE="BasicWebApp/BasicWebApp.sln"
