@@ -16,14 +16,14 @@ namespace BasicWebApp.Services
             return users.ToArray();        
         }
 
-        private IQueryable<User> SeparateIntoPages(IQueryable<User> users, UserQueryParameters queryParameters)
+        private static IQueryable<User> SeparateIntoPages(IQueryable<User> users, UserQueryParameters userQueryParameters)
         {
             return users
-                .Skip(queryParameters.Size * (queryParameters.Page - 1))
-                .Take(queryParameters.Size);
+                .Skip(userQueryParameters.Size * (userQueryParameters.Page - 1))
+                .Take(userQueryParameters.Size);
         }
 
-        private IQueryable<User> FilterWithNameParameters(IQueryable<User> users, UserQueryParameters queryParameters)
+        private static IQueryable<User> FilterWithNameParameters(IQueryable<User> users, UserQueryParameters queryParameters)
         {
             if (!string.IsNullOrEmpty(queryParameters.FirstName))
             {

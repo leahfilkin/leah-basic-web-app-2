@@ -13,14 +13,14 @@ namespace BasicWebApp.Tests
     public class IntegrationTests
     {
 
-        private HttpClient CreateClient()
+        private static HttpClient CreateClient()
         {
             return new WebApplicationFactory<Startup>().CreateClient();
         }
 
-        private StringContent SerializeUser(User user)
+        private static StringContent SerializeUser(User user)
         {
-            return new StringContent(JsonConvert.SerializeObject( 
+            return new(JsonConvert.SerializeObject( 
                     user), Encoding.UTF8,
                 "application/json"
             );

@@ -4,15 +4,15 @@ namespace BasicWebApp.Classes
 {
     public class QueryParameters
     {
-        private const int _maxSize = 100;
-        private int _size = 10;
+        private const int MaxSize = 100;
+        private readonly int _size = 10;
 
-        public int Page { get; set; }
+        public int Page { get; init; }
 
         public int Size
         {
             get => _size;
-            set => _size = Math.Min(_maxSize, value);
+            init => _size = Math.Min(MaxSize, value);
         }
     }
 }
