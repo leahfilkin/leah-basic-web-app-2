@@ -71,3 +71,29 @@ objects:
           targetPort: $((containerPort))
       selector:
         app: $(name)
+
+parameters:
+  - name: "name"
+    description: "application name"
+    required: true
+    parameterType: string
+  - name: "namespace"
+    description: "kube namespace"
+    required: true
+    parameterType: string
+  - name: "containerPort"
+    description: "Kube demo port"
+    required: true
+    parameterType: "int"
+  - name: "image"
+    description: "docker image to use"
+    required: true
+    parameterType: "string"
+  - name: "imageTag"
+    description: "image tag (ie. version)"
+    required: true
+    parameterType: "string"
+  - name: "host"
+    description: "hostname application will be exposed on (eg. go-boldly.svc.platform.myobdev.com)"
+    required: true
+    parameterType: string
