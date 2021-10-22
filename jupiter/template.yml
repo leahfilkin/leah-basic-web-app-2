@@ -2,7 +2,7 @@
 kind: "Template"
 apiVersion: "v1"
 metadata:
-  name: "leah-filkin-app"
+  name: "leah-filkin-app-deployment"
   annotations:
     description: "leah-filkin-app release template"
 objects:
@@ -28,7 +28,7 @@ objects:
             - image: $(imageName):$(imageTag)
               name: $(name)
               ports:
-                - containerPort: $(containerPort)
+                - containerPort: $((containerPort))
 
   - kind: Service #making it so that the containers can communicate
     apiVersion: v1
@@ -41,8 +41,8 @@ objects:
         app: $(name)
     spec:
       ports:
-        - port: $(containerPort)
-          targetPort: $(containerPort)
+        - port: 80
+          targetPort: $((containerPort))
       selector:
         app: $(name)
 
@@ -66,8 +66,11 @@ objects:
                   service:
                     name: $(serviceName)
                     port:
-                      number: $(containerPort)
+                      number: 80
       tls:
         - hosts:
             - $(host)
-          secretName: "leah-filkin-tls"
+          secretName: $(name)-tls
+          
+          
+          
