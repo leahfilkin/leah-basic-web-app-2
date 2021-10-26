@@ -8,6 +8,7 @@ namespace BasicWebApp.Services
 {
     public class UserService
     {
+        
         public User[] GetAll(IQueryable<User> users, UserQueryParameters queryParameters)
         {
             users = FilterWithNameParameters(users, queryParameters);

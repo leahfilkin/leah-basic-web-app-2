@@ -16,6 +16,7 @@ namespace BasicWebApp.Tests
         private static HttpClient CreateClient()
         {
             return new WebApplicationFactory<Startup>().CreateClient();
+            // client.DefaultRequestHeaders.Add("x-apiKey","1");
         }
 
         private static StringContent SerializeUser(User user)

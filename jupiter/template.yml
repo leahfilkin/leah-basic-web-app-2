@@ -29,6 +29,12 @@ objects:
               image: $(image):$(imageTag)
               ports:
                 - containerPort: $((containerPort))
+              env:
+                - name: AUTHENTICATION_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: leah-filkin-authentication-secret
+                      key: authentication_token
 
   - kind: Ingress
     apiVersion: networking.k8s.io/v1

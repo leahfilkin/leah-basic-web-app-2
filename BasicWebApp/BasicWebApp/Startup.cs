@@ -24,7 +24,10 @@ namespace BasicWebApp
         {
             services.AddDbContext<UsersContext>(options =>
                 options.UseInMemoryDatabase("Users"));
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.OperationFilter<CustomHeaderSwaggerAttribute>();
+            });
             services.AddScoped<UserService>();
             services.AddControllersWithViews();
             services.AddApiVersioning(options => { 
