@@ -29,12 +29,12 @@ namespace BasicWebApp.Controllers
         [HttpGet]
         public ActionResult<User> GetAllUsers([FromQuery] UserQueryParameters queryParameters)
         {
-            // var headers = Request.Headers;
-            // var secret = Environment.GetEnvironmentVariable("AUTHENTICATION_TOKEN");
-            // if (!headers.ContainsKey("x-apiKey") || headers["x-apiKey"] != secret)
-            // {
-            //     return Unauthorized();
-            // }
+            var headers = Request.Headers;
+            var secret = Environment.GetEnvironmentVariable("AUTHENTICATION_TOKEN");
+            if (!headers.ContainsKey("x-apiKey") || headers["x-apiKey"] != secret)
+            {
+                return Unauthorized();
+            }
             return Ok(_userService.GetAll(_context.Users, queryParameters));
         }
 
