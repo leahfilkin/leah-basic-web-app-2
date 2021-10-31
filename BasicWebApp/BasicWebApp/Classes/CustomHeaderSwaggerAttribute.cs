@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace BasicWebApp
+namespace BasicWebApp.Classes
 {
     public class CustomHeaderSwaggerAttribute : IOperationFilter
     {

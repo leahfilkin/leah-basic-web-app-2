@@ -16,7 +16,7 @@ namespace BasicWebApp.Tests
         private static HttpClient CreateClient()
         {
             var client = new WebApplicationFactory<Startup>().CreateClient();
-            client.DefaultRequestHeaders.Add("x-apiKey","test");
+            client.DefaultRequestHeaders.Add("x-apiKey","bGVhaA==");
             return client;
         }
 
