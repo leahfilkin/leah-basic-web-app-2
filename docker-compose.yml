@@ -3,6 +3,8 @@ version: "3.8"
 services:
   tests:
     image: mcr.microsoft.com/dotnet/sdk:5.0
+    environment:
+      AUTHENTICATION_TOKEN: "leah"
     working_dir: /app/BasicWebApp
     volumes:
       - "./BasicWebApp:/app/BasicWebApp"
