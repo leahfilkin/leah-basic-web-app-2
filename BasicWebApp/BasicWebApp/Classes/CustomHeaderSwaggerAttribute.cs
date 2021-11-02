@@ -19,7 +19,7 @@ namespace BasicWebApp.Classes
                 Required = true,
                 Schema = new OpenApiSchema
                 {
-                    Type = "String" 
+                    Type = "string" 
                 }
             });
         }

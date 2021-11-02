@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Reflection;
 using BasicWebApp.Classes;
 using BasicWebApp.Models;
 using BasicWebApp.Services;
@@ -12,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace BasicWebApp
 {
@@ -32,6 +35,22 @@ namespace BasicWebApp
             services.AddSwaggerGen(c =>
             {
                 c.OperationFilter<CustomHeaderSwaggerAttribute>();
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Basic Web App API",
+                    Description = "Acceleration phase 2 - basic web app",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Leah Filkin",
+                        Email = "leah.filkin@myob.com",
+                    },
+                });
+                
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
             services.AddScoped<UserService>();
             services.AddControllersWithViews();
@@ -49,7 +68,6 @@ namespace BasicWebApp
         {
             app.UseSwagger(c =>
             {
-                c.SerializeAsV2 = true;
             });
             app.UseSwaggerUI(c =>
             {
@@ -75,12 +93,7 @@ namespace BasicWebApp
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }
