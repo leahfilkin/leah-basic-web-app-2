@@ -12,19 +12,15 @@ using Microsoft.Extensions.Options;
 
 namespace BasicWebApp.Setup
 {
-    public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
+    public abstract class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
-        private readonly UsersContext _context;
-
-        public BasicAuthenticationHandler(
+        protected BasicAuthenticationHandler(
             IOptionsMonitor<AuthenticationSchemeOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
-            ISystemClock clock,
-            UsersContext context)
+            ISystemClock clock)
             : base(options, logger, encoder, clock)
         {
-            _context = context;
         }
 
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()

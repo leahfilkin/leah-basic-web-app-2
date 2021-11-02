@@ -2,7 +2,7 @@ using System;
 
 namespace BasicWebApp.Setup
 {
-    public class SecretFetcher
+    public static class SecretFetcher
     {
         public static string GetSecret()
         {
