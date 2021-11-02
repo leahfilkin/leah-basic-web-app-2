@@ -12,9 +12,9 @@ using Microsoft.Extensions.Options;
 
 namespace BasicWebApp.Setup
 {
-    public abstract class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
+    public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
-        protected BasicAuthenticationHandler(
+        public BasicAuthenticationHandler(
             IOptionsMonitor<AuthenticationSchemeOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
