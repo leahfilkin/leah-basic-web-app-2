@@ -1,6 +1,6 @@
 # Checklist
 ## Third-Party Libraries
-- [x] TPL00: We are utilizing the latest available stable version of the libraries where possible
+- [] TPL00: We are utilizing the latest available stable version of the libraries where possible
 - [x] TPL01: We have a plan to review GitHub vulnerability alerts
 ## Client Data Storage
 - [x] DAS00: We are not storing user’s password in the client
