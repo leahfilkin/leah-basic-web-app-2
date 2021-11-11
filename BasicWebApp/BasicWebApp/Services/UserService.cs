@@ -11,10 +11,34 @@ namespace BasicWebApp.Services
         
         public User[] GetAll(IQueryable<User> users, UserQueryParameters queryParameters)
         {
+            users = Sort(users, queryParameters);
             users = FilterWithNameParameters(users, queryParameters);
             users = SeparateIntoPages(users, queryParameters);
-            
             return users.ToArray();        
+        }
+
+        private IQueryable<User> Sort(IQueryable<User> users, UserQueryParameters queryParameters)
+        {
+            if (queryParameters.Order == null && queryParameters.SortBy == null)
+            {
+                return users;
+            }
+            users = queryParameters.Order switch
+            {
+                "desc" => queryParameters.SortBy.ToLower() switch
+                {
+                    "firstname" => users.OrderByDescending(user => user.FirstName),
+                    "lastname" => users.OrderByDescending(user => user.LastName),
+                    _ => users.OrderBy(user => user.Id)
+                },
+                _ => queryParameters.SortBy.ToLower() switch
+                {
+                    "firstname" => users.OrderBy(user => user.FirstName),
+                    "lastname" => users.OrderBy(user => user.LastName),
+                    _ => users.OrderBy(user => user.Id)
+                }
+            };
+            return users;
         }
 
         private static IQueryable<User> SeparateIntoPages(IQueryable<User> users, UserQueryParameters userQueryParameters)
