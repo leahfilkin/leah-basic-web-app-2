@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BasicWebApp.Controllers
 {
     [ApiVersion("1.0")]
-    [Route("users")] //you cant use the controller square brackets for this one
+    [Route("users")] 
     [ApiController]
     [Authorize]
     public class UsersController : Controller
