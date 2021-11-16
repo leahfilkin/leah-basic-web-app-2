@@ -17,4 +17,4 @@ then
     deployment="leah-filkin-app-preprod"
 fi
 
-ktmpl -f "jupiter/${env}.yml" -p imageTag "${imkubectl -n platform-enablement logs jupiter-docs-1234ageTag}" jupiter/template.yml | kubectl apply -f -
+ktmpl -f "jupiter/${env}.yml" -p imageTag "${imageTag}" jupiter/template.yml | kubectl apply -f -
