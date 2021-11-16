@@ -34,7 +34,7 @@ objects:
                   valueFrom:
                     secretKeyRef:
                       name: leah-filkin-authentication-secret
-                      key: apiKey
+                      key: authentication_token
 
   - kind: Ingress
     apiVersion: networking.k8s.io/v1
