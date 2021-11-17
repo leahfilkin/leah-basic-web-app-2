@@ -44,8 +44,8 @@ namespace BasicWebApp.Services
         private static IQueryable<User> SeparateIntoPages(IQueryable<User> users, UserQueryParameters userQueryParameters)
         {
             return users
-                .Skip(userQueryParameters.Size * (userQueryParameters.Page - 1))
-                .Take(userQueryParameters.Size);
+            .Skip(userQueryParameters.Size * (userQueryParameters.Page - 1))
+            .Take(userQueryParameters.Size);
         }
 
         private static IQueryable<User> FilterWithNameParameters(IQueryable<User> users, UserQueryParameters queryParameters)
