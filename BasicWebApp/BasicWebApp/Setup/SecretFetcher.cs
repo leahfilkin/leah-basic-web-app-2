@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace BasicWebApp.Setup
 {
@@ -6,7 +7,8 @@ namespace BasicWebApp.Setup
     {
         public static string GetSecret()
         {
-            return Environment.GetEnvironmentVariable("AUTHENTICATION_TOKEN");
+            var env = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("AUTHENTICATION_TOKEN"));
+            return Convert.ToBase64String(env);
         }
 
     }

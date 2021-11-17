@@ -1,16 +1,16 @@
 ---
 steps:
-  - label: "Run tests"
-    command: docker-compose run --rm tests
-    agents:
-      queue: fma-margaret-lab
-
-  - label: "Sonarqube scan"
-    command: .sonarqube/scan.sh
-    agents:
-      queue: fma-margaret-lab
+#  - label: "Run tests"
+#    command: docker-compose run --rm tests
+#    agents:
+#      queue: fma-margaret-lab
+#
+#  - label: "Sonarqube scan"
+#    command: .sonarqube/scan.sh
+#    agents:
+#      queue: fma-margaret-lab
   
-  - wait
+#  - wait
 
   - label: "Build Docker Image and Push to Cloudsmith"
     command: ./scripts/build.sh 
@@ -20,7 +20,7 @@ steps:
     agents:
       queue: fma-margaret-lab
   
-  - block: "Deploy to Preprod?"
+  - wait
 
   - label: "Deploy to Preprod"
     command: ./scripts/deploy.sh preprod ${BUILDKITE_BUILD_NUMBER}
