@@ -13,7 +13,7 @@ namespace BasicWebApp.Services
         {
             users = Sort(users, queryParameters);
             users = FilterWithNameParameters(users, queryParameters);
-            users = SeparateIntoPages(users, queryParameters);
+            users = FilterWithQuantityParameters(users, queryParameters);
             return users.ToArray();        
         }
 
@@ -41,7 +41,7 @@ namespace BasicWebApp.Services
             return users;
         }
 
-        private static IQueryable<User> SeparateIntoPages(IQueryable<User> users, UserQueryParameters userQueryParameters)
+        private static IQueryable<User> FilterWithQuantityParameters(IQueryable<User> users, UserQueryParameters userQueryParameters)
         {
             return users
             .Skip(userQueryParameters.Size * (userQueryParameters.Page - 1))
