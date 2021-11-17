@@ -32,11 +32,8 @@ namespace BasicWebApp.Setup
             {
                 var bytes = Convert.FromBase64String(Request.Headers["x-apiKey"]);
                 var credentials = Encoding.UTF8.GetString(bytes);
-                
-                Console.WriteLine(Request.Headers["x-apiKey"]);
-                Console.WriteLine(SecretFetcher.GetSecret());
-                
-                if (!String.Equals(Request.Headers["x-apiKey"], SecretFetcher.GetSecret()))
+
+                if (!String.Equals(credentials, SecretFetcher.GetSecret()))
                 {
                     return Task.FromResult(AuthenticateResult.Fail("Authentication invalid."));
                 }

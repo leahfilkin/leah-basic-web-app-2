@@ -7,8 +7,7 @@ namespace BasicWebApp.Setup
     {
         public static string GetSecret()
         {
-            var env = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("AUTHENTICATION_TOKEN"));
-            return Convert.ToBase64String(env);
+            return Environment.GetEnvironmentVariable("AUTHENTICATION_TOKEN");
         }
 
     }
