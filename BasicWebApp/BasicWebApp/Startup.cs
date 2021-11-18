@@ -19,9 +19,12 @@ namespace BasicWebApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IWebHostEnvironment HostEnvironment { get; }
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment hostEnvironment)
         {
             Configuration = configuration;
+            HostEnvironment = hostEnvironment;
         }
 
         public IConfiguration Configuration { get; }
@@ -29,6 +32,16 @@ namespace BasicWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (HostEnvironment.IsProduction())
+            {
+                services.AddDbContext<UsersContext>(options =>
+                    options.UseNpgsql(Configuration.GetSection("Database").Get<DatabaseConfig>().ConnectionString));
+            }
+            else
+            {
+                services.AddDbContext<UsersContext>(opt =>
+                    opt.UseInMemoryDatabase("Names"));
+            }
             services.AddDbContext<UsersContext>(options =>
                 options.UseInMemoryDatabase("Users"));
             services.AddSwaggerGen(c =>

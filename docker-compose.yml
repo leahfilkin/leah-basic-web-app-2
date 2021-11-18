@@ -6,6 +6,7 @@ services:
     image: mcr.microsoft.com/dotnet/sdk:5.0
     environment:
       AUTHENTICATION_TOKEN: "leah"
+      ASPNETCORE_ENVIRONMENT: Development
     working_dir: /app/BasicWebApp
     volumes:
       - "./BasicWebApp:/app/BasicWebApp"

@@ -11,4 +11,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 EXPOSE 80
 COPY --from=build-env /app/out .
+ENV ASPNETCORE_ENVIRONMENT=Production
 ENTRYPOINT [ "dotnet", "BasicWebApp.dll" ]

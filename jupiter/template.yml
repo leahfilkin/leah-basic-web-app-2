@@ -35,6 +35,26 @@ objects:
                     secretKeyRef:
                       name: leah-filkin-authentication-secret
                       key: apiKey
+                - name: Database__Host
+                  valueFrom:
+                    secretKeyRef:
+                      name: "$(name)-db-admin"
+                      key: DB_HOST
+                - name: Database__Username
+                  valueFrom:
+                    secretKeyRef:
+                      name: "$(name)-db-admin"
+                      key: DB_USER
+                - name: Database__Name
+                  valueFrom:
+                    secretKeyRef:
+                      name: "$(name)-db-admin"
+                      key: DB_NAME
+                - name: Database__Password
+                  valueFrom:
+                    secretKeyRef:
+                      name: "$(name)-db-admin"
+                      key: DB_PASSWORD
 
   - kind: Ingress
     apiVersion: networking.k8s.io/v1
@@ -77,6 +97,15 @@ objects:
           targetPort: $((containerPort))
       selector:
         app: $(name)
+        
+  - kind: Database
+    apiVersion: postgres.myob.com/v1
+    metadata:
+      name: "$(name)-db"
+      namespace: fma
+    spec:
+      instanceClass: "db.m5.large"
+      storage: 20
 
 parameters:
   - name: "name"
