@@ -10,7 +10,7 @@ namespace BasicWebApp.Models
         {
             
         }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Seed();
