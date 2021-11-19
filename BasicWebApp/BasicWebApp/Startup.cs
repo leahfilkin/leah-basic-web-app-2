@@ -32,7 +32,7 @@ namespace BasicWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            if (HostEnvironment.IsProduction())
+            if (Environment.GetEnvironmentVariable("AUTHENTICATION_TOKEN"))
             {
                 services.AddDbContext<UsersContext>(options =>
                     options.UseNpgsql(Configuration.GetSection("Database").Get<DatabaseConfig>().ConnectionString));
