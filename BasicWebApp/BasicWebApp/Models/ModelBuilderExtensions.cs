@@ -13,6 +13,7 @@ namespace BasicWebApp.Models
                     Id = new Guid("77E21A11-BE8B-46BA-A6ED-0D70ACBBAB4A"),
                     FirstName = "Leah", LastName = "Filkin"
                 },
+                
                 new User
                 {
                     Id = new Guid("504984A1-B367-405D-9822-2F1D34FF9A4F"),
