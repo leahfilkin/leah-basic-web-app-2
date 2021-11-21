@@ -39,11 +39,9 @@ namespace BasicWebApp
             }
             else
             {
-                services.AddDbContext<UsersContext>(opt =>
-                    opt.UseInMemoryDatabase("Names"));
+          		services.AddDbContext<UsersContext>(options =>
+                	options.UseInMemoryDatabase("Users"));
             }
-            services.AddDbContext<UsersContext>(options =>
-                options.UseInMemoryDatabase("Users"));
             services.AddSwaggerGen(c =>
             {
                 c.OperationFilter<CustomHeaderSwaggerAttribute>();
