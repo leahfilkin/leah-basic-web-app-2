@@ -17,7 +17,7 @@ namespace BasicWebApp.Services
             return users.ToArray();        
         }
 
-        private IQueryable<User> Sort(IQueryable<User> users, UserQueryParameters queryParameters)
+        private static IQueryable<User> Sort(IQueryable<User> users, QueryParameters queryParameters)
         {
             if (queryParameters.Order == null && queryParameters.SortBy == null)
             {
@@ -41,7 +41,7 @@ namespace BasicWebApp.Services
             return users;
         }
 
-        private static IQueryable<User> FilterWithQuantityParameters(IQueryable<User> users, UserQueryParameters userQueryParameters)
+        private static IQueryable<User> FilterWithQuantityParameters(IQueryable<User> users, QueryParameters userQueryParameters)
         {
             return users
             .Skip(userQueryParameters.Size * (userQueryParameters.Page - 1))

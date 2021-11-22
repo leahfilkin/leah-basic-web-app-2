@@ -8,12 +8,10 @@ namespace BasicWebApp.Classes
         private readonly int _size = 10;
         private const int MaxPage = 100;
         private readonly int _page= 1;
-        private string _sortBy = String.Empty;
-        private string _order = String.Empty;
         
-        public string SortBy { get; init; }
-        
-        public string Order { get; init; }
+        public string SortBy { get; init; } = string.Empty;
+
+        public string Order { get; init; } = string.Empty;
 
         public int Page {             
             get => _page;

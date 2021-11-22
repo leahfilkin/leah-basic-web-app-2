@@ -15,8 +15,5 @@ namespace BasicWebApp.Models
         {
             modelBuilder.Seed();
         }
-        //
-        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //     => optionsBuilder.UseInMemoryDatabase("Users");
     }
 }
