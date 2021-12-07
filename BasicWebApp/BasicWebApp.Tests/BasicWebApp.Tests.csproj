@@ -28,8 +28,4 @@
     <ProjectReference Include="..\BasicWebApp\BasicWebApp.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="BasicWebApp.Tests_old.csproj" />
-  </ItemGroup>
-
 </Project>

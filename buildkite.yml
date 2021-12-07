@@ -4,7 +4,8 @@ steps:
     command: docker-compose run --rm tests
     agents:
       queue: fma-margaret-lab
-
+    env: 
+      AUTHENTICATION_TOKEN
   - label: "Sonarqube scan"
     command: .sonarqube/scan.sh
     agents:
