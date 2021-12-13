@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using BasicWebApp.Models;
+using BasicWebApp.Setup;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using Xunit;
@@ -12,11 +13,14 @@ namespace BasicWebApp.Tests
 {
     public class IntegrationTests
     {
-
+        private static string EncodeSecretToBase64(string plainText) {
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            return Convert.ToBase64String(plainTextBytes);
+        }
         private static HttpClient CreateClient()
         {
             var client = new WebApplicationFactory<Startup>().CreateClient();
-            client.DefaultRequestHeaders.Add("x-apiKey","bGVhaA==");
+            client.DefaultRequestHeaders.Add("x-apiKey", EncodeSecretToBase64(SecretFetcher.GetSecret()));
             return client;
         }
 

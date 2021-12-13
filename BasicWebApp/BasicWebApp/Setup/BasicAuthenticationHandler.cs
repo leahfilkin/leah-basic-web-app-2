@@ -27,7 +27,6 @@ namespace BasicWebApp.Setup
         {
             if (!Request.Headers.ContainsKey("x-apiKey"))
                 return Task.FromResult(AuthenticateResult.NoResult());
-
             try
             {
                 var bytes = Convert.FromBase64String(Request.Headers["x-apiKey"]);
